@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище saloModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Аварийная работа">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Повреждение" Type="varchar" MaxLength="100" />
+    <Property Name="Характер повреждения" Type="nvarchar" MaxLength="100" />
+    <Property Name="Объект" Type="varchar" MaxLength="100" />
+    <Property Name="Время начала" Type="datetime" />
+    <Property Name="Время конца" Type="datetime" />
+    <Property Name="Статус" Type="bit" />
+    <Property Name="Примечание" Type="nvarchar" MaxLength="100" />
+    <Property Name="Код_Заявки" Type="int" />
+    <Property Name="Код_Участка" Type="int" />
+    <Property Name="Код_Связи" Type="int" />
+    <Property Name="Код_Материалов" Type="int" />
+    <Property Name="Код_Бригады" Type="int" />
+  </EntityType>
+  <EntityType Name="Бригада">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Количество сотрудников" Type="int" />
+    <Property Name="Код_Смены" Type="int" />
+    <Property Name="Код_Сотрудников" Type="int" />
+    <Property Name="Код_Транспорта" Type="int" />
+  </EntityType>
+  <EntityType Name="Заявка">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Дата" Type="datetime" />
+    <Property Name="Нахождение" Type="varchar" MaxLength="100" />
+    <Property Name="Код_Сотрудника" Type="int" />
+    <Property Name="Код_Аварийная_работа" Type="int" />
+  </EntityType>
+  <EntityType Name="Материал">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="100" />
+    <Property Name="Цена" Type="money" />
+  </EntityType>
+  <EntityType Name="Связь">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Смена">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Вид" Type="nvarchar" MaxLength="100" />
+    <Property Name="Дата" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Сотрудник">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Фамилия" Type="varchar" MaxLength="100" />
+    <Property Name="Имя" Type="varchar" MaxLength="100" />
+    <Property Name="Отчество" Type="varchar" MaxLength="100" />
+    <Property Name="Дата рождения" Type="datetime" />
+    <Property Name="Адрес" Type="varchar" MaxLength="100" />
+    <Property Name="Электронная почта" Type="varchar" MaxLength="100" />
+    <Property Name="Телефон" Type="varchar" MaxLength="20" />
+    <Property Name="Должность" Type="varchar" MaxLength="50" />
+    <Property Name="Фото" Type="varchar" MaxLength="100" />
+    <Property Name="Код_учётной_записи" Type="int" />
+  </EntityType>
+  <EntityType Name="Список материалов">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Код_Материала" Type="int" />
+    <Property Name="Количество" Type="int" />
+  </EntityType>
+  <EntityType Name="Транспорт">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Тип" Type="nvarchar" MaxLength="100" />
+    <Property Name="Вместимость" Type="int" />
+  </EntityType>
+  <EntityType Name="Участок">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="Наименование" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Учётная запись">
+    <Key>
+      <PropertyRef Name="Код" />
+    </Key>
+    <Property Name="Код" Type="int" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Аварийная работа_Заявка">
+    <End Role="Заявка" Type="Self.Заявка" Multiplicity="0..1" />
+    <End Role="Аварийная работа" Type="Self.Аварийная работа" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заявка">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Аварийная работа">
+        <PropertyRef Name="Код_Заявки" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Аварийная работа_Связь">
+    <End Role="Связь" Type="Self.Связь" Multiplicity="0..1" />
+    <End Role="Аварийная работа" Type="Self.Аварийная работа" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Связь">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Аварийная работа">
+        <PropertyRef Name="Код_Связи" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Аварийная работа_Список материалов">
+    <End Role="Список материалов" Type="Self.Список материалов" Multiplicity="0..1" />
+    <End Role="Аварийная работа" Type="Self.Аварийная работа" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Список материалов">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Аварийная работа">
+        <PropertyRef Name="Код_Материалов" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Аварийная работа_Участок">
+    <End Role="Участок" Type="Self.Участок" Multiplicity="0..1" />
+    <End Role="Аварийная работа" Type="Self.Аварийная работа" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Участок">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Аварийная работа">
+        <PropertyRef Name="Код_Участка" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Бригада_Смена">
+    <End Role="Смена" Type="Self.Смена" Multiplicity="0..1" />
+    <End Role="Бригада" Type="Self.Бригада" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Смена">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Бригада">
+        <PropertyRef Name="Код_Смены" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Бригада_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+    <End Role="Бригада" Type="Self.Бригада" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Бригада">
+        <PropertyRef Name="Код_Сотрудников" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Бригада_Транспорт">
+    <End Role="Транспорт" Type="Self.Транспорт" Multiplicity="0..1" />
+    <End Role="Бригада" Type="Self.Бригада" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Транспорт">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Бригада">
+        <PropertyRef Name="Код_Транспорта" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заявка_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+    <End Role="Заявка" Type="Self.Заявка" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Заявка">
+        <PropertyRef Name="Код_Сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудник_Учётная запись">
+    <End Role="Учётная запись" Type="Self.Учётная запись" Multiplicity="0..1" />
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Учётная запись">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Сотрудник">
+        <PropertyRef Name="Код_учётной_записи" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Список материалов_Материал">
+    <End Role="Материал" Type="Self.Материал" Multiplicity="0..1" />
+    <End Role="Список материалов" Type="Self.Список материалов" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Материал">
+        <PropertyRef Name="Код" />
+      </Principal>
+      <Dependent Role="Список материалов">
+        <PropertyRef Name="Код_Материала" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище saloModelContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Аварийная работа" EntityType="Self.Аварийная работа" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Бригада" EntityType="Self.Бригада" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заявка" EntityType="Self.Заявка" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Материал" EntityType="Self.Материал" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Связь" EntityType="Self.Связь" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Смена" EntityType="Self.Смена" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Список материалов" EntityType="Self.Список материалов" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Транспорт" EntityType="Self.Транспорт" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Участок" EntityType="Self.Участок" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Учётная запись" EntityType="Self.Учётная запись" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Аварийная работа_Заявка" Association="Self.FK_Аварийная работа_Заявка">
+      <End Role="Заявка" EntitySet="Заявка" />
+      <End Role="Аварийная работа" EntitySet="Аварийная работа" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Аварийная работа_Связь" Association="Self.FK_Аварийная работа_Связь">
+      <End Role="Связь" EntitySet="Связь" />
+      <End Role="Аварийная работа" EntitySet="Аварийная работа" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Аварийная работа_Список материалов" Association="Self.FK_Аварийная работа_Список материалов">
+      <End Role="Список материалов" EntitySet="Список материалов" />
+      <End Role="Аварийная работа" EntitySet="Аварийная работа" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Аварийная работа_Участок" Association="Self.FK_Аварийная работа_Участок">
+      <End Role="Участок" EntitySet="Участок" />
+      <End Role="Аварийная работа" EntitySet="Аварийная работа" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Бригада_Смена" Association="Self.FK_Бригада_Смена">
+      <End Role="Смена" EntitySet="Смена" />
+      <End Role="Бригада" EntitySet="Бригада" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Бригада_Сотрудник" Association="Self.FK_Бригада_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Бригада" EntitySet="Бригада" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Бригада_Транспорт" Association="Self.FK_Бригада_Транспорт">
+      <End Role="Транспорт" EntitySet="Транспорт" />
+      <End Role="Бригада" EntitySet="Бригада" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заявка_Сотрудник" Association="Self.FK_Заявка_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Заявка" EntitySet="Заявка" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудник_Учётная запись" Association="Self.FK_Сотрудник_Учётная запись">
+      <End Role="Учётная запись" EntitySet="Учётная запись" />
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Список материалов_Материал" Association="Self.FK_Список материалов_Материал">
+      <End Role="Материал" EntitySet="Материал" />
+      <End Role="Список материалов" EntitySet="Список материалов" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

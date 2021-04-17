@@ -1,0 +1,37 @@
+﻿<Page x:Class="uargaz.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+      xmlns:local="clr-namespace:uargaz"
+      mc:Ignorable="d" 
+      d:DesignHeight="950" d:DesignWidth="1350"
+      Title="MainPage">
+
+    <Grid >
+        <TextBlock  Text="Учёт аварийно-восстановительных работ" FontSize="30" FontWeight="Bold" Margin="38,100,0,0" HorizontalAlignment="Left" Width="1302"/>
+
+        <TextBox 
+        x:Name="Search"
+        materialDesign:HintAssist.Hint="Поиск" 
+        materialDesign:TransitionAssist.DisableTransitions="True"  HorizontalAlignment="Left" Height="35" Margin="242,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" FontSize="18" TextChanged="SearchSotrudnik_TextChanged"/>
+        <DataGrid Name="TablesTB" ColumnHeaderHeight="80"   AutoGenerateColumns="False" IsReadOnly="True" Height="784" Margin="10,156,10,0" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Повреждение" Binding="{Binding Повреждение}" Width="130"></DataGridTextColumn>
+                <DataGridTextColumn Header="Характер повреждения" Binding="{Binding Характер_повреждения}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="Объект" Binding="{Binding Объект}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Участок" Binding="{Binding Участок.Наименование}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Связь" Binding="{Binding Связь.Наименование}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ответственный" Binding="{Binding Сотрудник.Фамилия}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Время начала" Binding="{Binding Время_начала}" Width="150"></DataGridTextColumn>
+                <DataGridTextColumn Header="Время конца" Binding="{Binding Время_конца}" Width="150"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Статус" Binding="{Binding Статус}" Width="100"></DataGridCheckBoxColumn>
+                <DataGridTextColumn Header="Примечание" Binding="{Binding Примечание}" Width="1*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Page>

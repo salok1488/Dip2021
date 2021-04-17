@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище uargazModelContainer" CdmEntityContainer="uargazEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="uargazModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Аварийная_работа">
+      <EntityTypeMapping TypeName="uargazModel.Аварийная_работа">
+        <MappingFragment StoreEntitySet="Аварийная работа">
+          <ScalarProperty Name="Код_Бригады" ColumnName="Код_Бригады" />
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Повреждение" ColumnName="Повреждение" />
+          <ScalarProperty Name="Характер_повреждения" ColumnName="Характер повреждения" />
+          <ScalarProperty Name="Объект" ColumnName="Объект" />
+          <ScalarProperty Name="Связь" ColumnName="Связь" />
+          <ScalarProperty Name="Время_начала" ColumnName="Время начала" />
+          <ScalarProperty Name="Время_конца" ColumnName="Время конца" />
+          <ScalarProperty Name="Статус" ColumnName="Статус" />
+          <ScalarProperty Name="Примечание" ColumnName="Примечание" />
+          <ScalarProperty Name="Код_Заявки" ColumnName="Код_Заявки" />
+          <ScalarProperty Name="Код_Участка" ColumnName="Код_Участка" />
+          <ScalarProperty Name="Код_Материалов" ColumnName="Код_Материалов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Бригада">
+      <EntityTypeMapping TypeName="uargazModel.Бригада">
+        <MappingFragment StoreEntitySet="Бригада">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Количество_сотрудников" ColumnName="Количество сотрудников" />
+          <ScalarProperty Name="Код_Смены" ColumnName="Код_Смены" />
+          <ScalarProperty Name="Код_Сотрудников" ColumnName="Код_Сотрудников" />
+          <ScalarProperty Name="Код_Транспорта" ColumnName="Код_Транспорта" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заявка">
+      <EntityTypeMapping TypeName="uargazModel.Заявка">
+        <MappingFragment StoreEntitySet="Заявка">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+          <ScalarProperty Name="Нахождение" ColumnName="Нахождение" />
+          <ScalarProperty Name="Код_Сотрудника" ColumnName="Код_Сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Смена">
+      <EntityTypeMapping TypeName="uargazModel.Смена">
+        <MappingFragment StoreEntitySet="Смена">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Вид" ColumnName="Вид" />
+          <ScalarProperty Name="Дата" ColumnName="Дата" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудник">
+      <EntityTypeMapping TypeName="uargazModel.Сотрудник">
+        <MappingFragment StoreEntitySet="Сотрудник">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Электронная_почта" ColumnName="Электронная почта" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Фото" ColumnName="Фото" />
+          <ScalarProperty Name="Код_учётной_записи" ColumnName="Код_учётной_записи" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Список_использованных_материалов">
+      <EntityTypeMapping TypeName="uargazModel.Список_использованных_материалов">
+        <MappingFragment StoreEntitySet="Список использованных материалов">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="Количество" ColumnName="Количество" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Транспорт">
+      <EntityTypeMapping TypeName="uargazModel.Транспорт">
+        <MappingFragment StoreEntitySet="Транспорт">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Тип" ColumnName="Тип" />
+          <ScalarProperty Name="Вместимость" ColumnName="Вместимость" />
+          <ScalarProperty Name="Код_Аварийная_работа" ColumnName="Код_Аварийная_работа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Участок">
+      <EntityTypeMapping TypeName="uargazModel.Участок">
+        <MappingFragment StoreEntitySet="Участок">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Учётная_запись">
+      <EntityTypeMapping TypeName="uargazModel.Учётная_запись">
+        <MappingFragment StoreEntitySet="Учётная запись">
+          <ScalarProperty Name="Код" ColumnName="Код" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

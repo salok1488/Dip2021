@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8f8fc8a0c2a2473aad31de0bc944f8f1" Name="Diagram1">
+        <EntityTypeShape EntityType="uargazModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Аварийная_работа" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Бригада" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Заявка" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Смена" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Сотрудник" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Список_использованных_материалов" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Транспорт" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Участок" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="uargazModel.Учётная_запись" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="uargazModel.FK_Аварийная_работа_Заявка" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Аварийная_работа_Список_использованных_материалов" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Аварийная_работа_Участок" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Бригада_Смена" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Бригада_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Бригада_Транспорт" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Заявка_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Сотрудник_Учётная_запись" ManuallyRouted="false" />
+        <AssociationConnector Association="uargazModel.FK_Аварийная_работа_Бригада" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

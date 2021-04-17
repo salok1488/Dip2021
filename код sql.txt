@@ -1,0 +1,16 @@
+--create database salo
+use salo
+--create table Участок (Код int primary key not null, Наименование nvarchar(100))
+--create table Связь (Код int primary key not null, Наименование nvarchar(100))
+--create table [Аварийная работа] (Код int identity(1,1) not null primary key, Повреждение varchar(100),
+--[Характер повреждения] nvarchar(100), Объект varchar(100),[Время начала] datetime,[Время конца] datetime,Статус bit,Примечание nvarchar(100),
+--Код_Заявки int, Код_Участка int, Код_Связи int, Код_Материалов int, Код_Бригады int)
+--create table Склад (Код int not null primary key,Материал nvarchar(100), Количество int)
+--create table [Список материалов] (Код int not null primary key,Название nvarchar(100),Стоимость money, Количество int, IdСклад int )
+--create table Смена (Код int not null primary key,Вид nvarchar(100), Дата datetime)
+--create table Бригада (Код int not null primary key,[Количество сотрудников] int, Код_Смены int, Код_Сотрудников int, Код_Транспорта int)
+--create table Транспорт (Код int not null primary key,Тип nvarchar(100), Вместимость int, Код_Аварийная_работа int)
+--create table Сотрудник (Код int identity(1,1) not null primary key, Фамилия varchar(100), Имя varchar(100), Отчество varchar(100), [Дата рождения] datetime,
+--Адрес varchar(100),[Электронная почта] varchar(100), Телефон varchar(20),Должность varchar(50), Фото varchar(100), Код_учётной_записи int)
+--create table Заявка (Код int not null, Дата datetime, Нахождение varchar(100), Код_Сотрудника int, Код_Аварийная_работа int)
+--create table [Учётная запись] (Код int not null primary key,login varchar(50), password varchar(50))
